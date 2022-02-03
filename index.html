@@ -5,13 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+    <div class="buttons">
+        <button class="playRoundButtons">ROCK</button>
+        <button class="playRoundButtons">PAPER</button>
+        <button class="playRoundButtons">SCICCORS</button>
+    </div>
+    <div>
 
-    <button class="playRoundButtons">ROCK</button>
-    <button class="playRoundButtons">PAPER</button>
-    <button class="playRoundButtons">SCICCORS</button>
+        <p class="result">Result</p>
+        <p >Score of player: <a class="playerScore">0</a> </p>
+        <p >Score of Computer: <a class="computerScore" >0</a></p>
+        
+    </div>
+    <p class="winner"></p>
 
+    <button type="reset" class="restart">Restart The Game</button>
+</div>
     <script src="index.js"></script>
 </body>
 </html>

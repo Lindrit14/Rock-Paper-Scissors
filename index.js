@@ -10,31 +10,52 @@ function playRound(playerSelection, computerSelection){
         computerSelection === playerSelection||
         computerSelection === playerSelection){
 
-        return console.log("Draw");
+        result.textContent = "It's a draw."
+        
 
     }else if(
         computerSelection === moves[0] && playerSelection === moves[1]||
         computerSelection === moves[1] && playerSelection === moves[2]||
         computerSelection === moves[2] && playerSelection === moves[0]){
+    
+        result.textContent = "The player wins.";
+        playerScore++;
+        showPlayerScore.innerHTML = playerScore;
 
-        return console.log("Player Wins");
          
     }else if(
         computerSelection === moves[0] && playerSelection === moves[2]||
         computerSelection === moves[1] && playerSelection === moves[0]||
         computerSelection === moves[2] && playerSelection === moves[1]){
 
-        return console.log("Computer Wins");
+        result.textContent = "The computer wins."
+        computerScore++;
+
+        showComputerScore.textContent = computerScore;
 
     }else {
         return console.log("something went wrong");
     }
     
 }
+
+
+function endGame(){
+    if(playerScore ===5){
+        showWinner.textContent = "You have won the match!"
+        
+    }else if(computerScore===5){
+        showWinner.textContent = "GAME OVER!"
+       
+    }
+}
+
 // Section of DOM and Eventlisteners 
 const btns = document.querySelectorAll(".playRoundButtons");
-
-
+const result = document.querySelector(".result");
+const showPlayerScore = document.querySelector(".playerScore");
+const showComputerScore = document.querySelector(".computerScore");
+const showWinner = document.querySelector(".winner");
 // the array of moves the computer can choose from
 let moves = ["rock", "paper", "sciccors"];
 // defining how the input of the player should be taken. and what should be done to it
@@ -56,10 +77,12 @@ let computerScore = 0;
 
 btns.forEach((btn)=>{
     btn.addEventListener("click",function(e){
-        playerSelection = e.target.innerText.toLowerCase();
+        playerSelection = e.target.textContent.toLowerCase();
         
         playRound(playerSelection, computerSelection);
         computerSelection = computerPlay(); 
+        endGame();
+        
     })
 }) 
 
