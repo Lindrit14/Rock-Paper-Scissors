@@ -1,88 +1,51 @@
-
-// this is how the computer chooses a random move from move 
+// this is how the computer chooses a random move from moves
 function computerPlay(){
-    let move = moves[Math.floor(Math.random() * 3)]
-    return move
+    return moves[Math.floor(Math.random() * 3)];
 }
 // here are all the possible outcomes. We get ONE outcome if one case is true. 
 function playRound(playerSelection, computerSelection){
 
-//this section is for rock possabilities///////////////////////////////
-    if(computerSelection === moves[0] && playerSelection === moves[0]){
-        return "Draw";
 
-    }else if(computerSelection === moves[0] && playerSelection === moves[1]){
-        console.log(`Player wins! ${moves[1]} beats ${moves[0]}`);
-        return"Player Score: " + ++playerScore;
+    if( computerSelection === playerSelection|| 
+        computerSelection === playerSelection||
+        computerSelection === playerSelection){
+
+        return console.log("Draw");
+
+    }else if(
+        computerSelection === moves[0] && playerSelection === moves[1]||
+        computerSelection === moves[1] && playerSelection === moves[2]||
+        computerSelection === moves[2] && playerSelection === moves[0]){
+
+        return console.log("Player Wins");
          
-    }else if(computerSelection === moves[0] && playerSelection === moves[2]){
-        console.log(`Computer wins! ${moves[0]} beats ${moves[2]}`);
-        return "Computer Score: " + ++computerScore;
+    }else if(
+        computerSelection === moves[0] && playerSelection === moves[2]||
+        computerSelection === moves[1] && playerSelection === moves[0]||
+        computerSelection === moves[2] && playerSelection === moves[1]){
 
-//this section is for paper possabilities/////////////////////////
-    }else if(computerSelection === moves[1] && playerSelection === moves[1]){
-        return "Draw";
-
-    }else if(computerSelection === moves[1] && playerSelection === moves[2]){
-        console.log(`Player wins! ${moves[2]} beats ${moves[1]}`);
-        return "Player Score: " + ++playerScore;
-
-    }else if(computerSelection === moves[1] && playerSelection === moves[0]){
-        console.log(`Computer wins! ${moves[1]} beats ${moves[0]}`);
-        return "Computer Score: " + ++computerScore;
-
-//this section is for sciccors possabilities ///////////////////////////
-    }else if(computerSelection === moves[2] && playerSelection === moves[2]){
-        return "Draw";
-
-    }else if(computerSelection === moves[2] && playerSelection === moves[0]){
-        console.log(`Player wins! ${moves[0]} beats ${moves[2]}`);
-        return "Player Score: " + ++playerScore;
-        
-
-    }else if(computerSelection === moves[2] && playerSelection === moves[1]){
-        console.log(`Computer wins! ${moves[2]} beats ${moves[1]}`);
-        return "Computer Score: " + ++computerScore;
+        return console.log("Computer Wins");
 
     }else {
-        return console.log("Error");
+        return console.log("something went wrong");
     }
     
 }
-
-function game(){
-
-    for(let i=1;i<= 5; i++){
-        console.log(playRound(playerSelection, computerSelection));
-        playerSelection = prompt("Choose Again:").toLowerCase();
-        computerSelection = computerPlay();  
-    }
-    if(playerScore > computerScore){
-        console.log("Player Won");
-    }else if(playerScore === computerScore){
-        console.log("It's a Draw");
-    }else{
-        console.log("Computer Won");
-    }
-
-    //Play the game as many times as it takes the player or the computer to reach a score of 5
-    //after every round the player and the computer need to choose their mooves again
-    //  
-
-return "Game has ended";
-}
-
-
+// Section of DOM and Eventlisteners 
+const btns = document.querySelectorAll(".playRoundButtons");
 
 
 // the array of moves the computer can choose from
 let moves = ["rock", "paper", "sciccors"];
-
 // defining how the input of the player should be taken. and what should be done to it
-let playerSelection = prompt("Choose a moove").toLocaleLowerCase();
+let playerSelection;
+
+
 
 //defining how the computer gets its move
 let computerSelection = computerPlay();
+
+// btns.forEach(btn => btn.addEventListener("click", playRound));
 
 
 let playerScore = 0;
@@ -90,13 +53,15 @@ let playerScore = 0;
 let computerScore = 0;
 
 
-console.log(game())
 
-
-
-
-
-
+btns.forEach((btn)=>{
+    btn.addEventListener("click",function(e){
+        playerSelection = e.target.innerText.toLowerCase();
+        
+        playRound(playerSelection, computerSelection);
+        computerSelection = computerPlay(); 
+    })
+}) 
 
 
 
