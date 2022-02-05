@@ -2,6 +2,25 @@ body {
     background-color: rgb(252, 188, 184);
 }
 
+button {
+    width: 200px;
+    padding: 20px;
+    border-radius: 15px;
+    border-style: none;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.2);
+    background-color: rgb(77, 80, 97);
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+button:hover {
+    background-color: rgb(130, 134, 155);
+}
+
 .container {
     height: 100vh;
     display: flex;
@@ -11,16 +30,11 @@ body {
     align-items: center;
 }
 
-button {
-    width: 200px;
-    padding: 20px;
-    border-radius: 15px;
-    border-style: none;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.2);
-    background-color: rgb(77, 80, 97);
-    color: whitesmoke;
+.buttons {
+    display: flex;
+    gap: 20px;
 }
-
-button:hover {
-    background-color: rgb(130, 134, 155);
+.gameInformation {
+    display: flex;
+    gap: 20px;
 }

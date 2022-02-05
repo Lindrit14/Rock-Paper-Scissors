@@ -20,7 +20,7 @@ function playRound(playerSelection, computerSelection){
     
         result.textContent = "The player wins.";
         playerScore++;
-        showPlayerScore.innerHTML = playerScore;
+        showPlayerScore.textContent = playerScore;
 
          
     }else if(
@@ -39,14 +39,21 @@ function playRound(playerSelection, computerSelection){
     
 }
 
-
 function endGame(){
-    if(playerScore ===5){
-        showWinner.textContent = "You have won the match!"
-        
-    }else if(computerScore===5){
-        showWinner.textContent = "GAME OVER!"
-       
+    if(playerScore ===5 || computerScore === 5) {
+        btns.forEach((btn)=>{
+            btn.disabled = true;
+        })
+    }
+    
+};
+
+
+function declareWinner(){
+    if(playerScore === 5){
+        showWinner.textContent = "You have won";
+    }else if (computerScore === 5){
+        showWinner.textContent = " The computer has won";
     }
 }
 
@@ -56,18 +63,16 @@ const result = document.querySelector(".result");
 const showPlayerScore = document.querySelector(".playerScore");
 const showComputerScore = document.querySelector(".computerScore");
 const showWinner = document.querySelector(".winner");
+const restart = document.querySelector(".restart");
+
+
 // the array of moves the computer can choose from
 let moves = ["rock", "paper", "sciccors"];
 // defining how the input of the player should be taken. and what should be done to it
 let playerSelection;
 
-
-
 //defining how the computer gets its move
 let computerSelection = computerPlay();
-
-// btns.forEach(btn => btn.addEventListener("click", playRound));
-
 
 let playerScore = 0;
 
@@ -77,17 +82,30 @@ let computerScore = 0;
 
 btns.forEach((btn)=>{
     btn.addEventListener("click",function(e){
-        playerSelection = e.target.textContent.toLowerCase();
-        
+       
+        console.log(e);
+        playerSelection = e.target.innerText.toLowerCase().trim();
+        console.log("player Selection:",playerSelection);
+        console.log("computer Selection:", computerSelection);
         playRound(playerSelection, computerSelection);
         computerSelection = computerPlay(); 
         endGame();
-        
+        declareWinner();
     })
 }) 
 
+restart.addEventListener("click", ()=>{
 
+    btns.forEach((btn)=>{
+        btn.disabled = false;})
 
+    playerScore = 0;
+    showPlayerScore.textContent = 0;
+    computerScore = 0;
+    showComputerScore.textContent = 0;
+
+    showWinner.textContent = "";
+});
 
 
 
