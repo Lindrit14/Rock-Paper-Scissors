@@ -38,3 +38,12 @@ button:hover {
     display: flex;
     gap: 20px;
 }
+
+.winner {
+    height: 20px;
+}
+
+.restart {
+    margin: 50px;
+    visibility: hidden;
+}

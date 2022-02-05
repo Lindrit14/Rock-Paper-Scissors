@@ -52,8 +52,10 @@ function endGame(){
 function declareWinner(){
     if(playerScore === 5){
         showWinner.textContent = "You have won";
+        restart.style.visibility = "visible";
     }else if (computerScore === 5){
-        showWinner.textContent = " The computer has won";
+        showWinner.textContent = "The computer has won";
+        restart.style.visibility = "visible";
     }
 }
 
@@ -82,11 +84,8 @@ let computerScore = 0;
 
 btns.forEach((btn)=>{
     btn.addEventListener("click",function(e){
-       
-        console.log(e);
-        playerSelection = e.target.innerText.toLowerCase().trim();
-        console.log("player Selection:",playerSelection);
-        console.log("computer Selection:", computerSelection);
+        
+        playerSelection = e.target.attributes[0].textContent.toLowerCase().trim();
         playRound(playerSelection, computerSelection);
         computerSelection = computerPlay(); 
         endGame();
@@ -97,16 +96,19 @@ btns.forEach((btn)=>{
 restart.addEventListener("click", ()=>{
 
     btns.forEach((btn)=>{
-        btn.disabled = false;})
-
+        btn.disabled = false;
+    });
     playerScore = 0;
-    showPlayerScore.textContent = 0;
     computerScore = 0;
-    showComputerScore.textContent = 0;
 
+    showPlayerScore.textContent = 0;
+    showComputerScore.textContent = 0;
+    
+    result.textContent= "Result"
     showWinner.textContent = "";
+    restart.style.visibility = "hidden";
 });
 
 
 
-    
+
