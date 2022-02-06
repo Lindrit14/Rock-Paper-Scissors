@@ -35,12 +35,45 @@ button:hover {
     gap: 20px;
 }
 .gameInformation {
+    width: 600px;
     display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
+.result {
+    font-size: 30px;
+}
+
+.resultContainer {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scoreContainer {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.innerScoreContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 30px;
+}
+
+.playerScore,
+.computerScore {
+    display: flex;
+    justify-content: center;
+}
 .winner {
     height: 20px;
+    margin-top: 30px;
+    font-size: 30px;
 }
 
 .restart {

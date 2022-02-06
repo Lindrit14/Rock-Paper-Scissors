@@ -30,13 +30,11 @@ function playRound(playerSelection, computerSelection){
 
         result.textContent = "The computer wins."
         computerScore++;
-
         showComputerScore.textContent = computerScore;
 
     }else {
         return console.log("something went wrong");
     }
-    
 }
 
 function endGame(){
@@ -45,7 +43,6 @@ function endGame(){
             btn.disabled = true;
         })
     }
-    
 };
 
 
@@ -68,20 +65,6 @@ const showWinner = document.querySelector(".winner");
 const restart = document.querySelector(".restart");
 
 
-// the array of moves the computer can choose from
-let moves = ["rock", "paper", "sciccors"];
-// defining how the input of the player should be taken. and what should be done to it
-let playerSelection;
-
-//defining how the computer gets its move
-let computerSelection = computerPlay();
-
-let playerScore = 0;
-
-let computerScore = 0;
-
-
-
 btns.forEach((btn)=>{
     btn.addEventListener("click",function(e){
         
@@ -90,8 +73,8 @@ btns.forEach((btn)=>{
         computerSelection = computerPlay(); 
         endGame();
         declareWinner();
-    })
-}) 
+    });
+}); 
 
 restart.addEventListener("click", ()=>{
 
@@ -103,7 +86,7 @@ restart.addEventListener("click", ()=>{
 
     showPlayerScore.textContent = 0;
     showComputerScore.textContent = 0;
-    
+
     result.textContent= "Result"
     showWinner.textContent = "";
     restart.style.visibility = "hidden";
@@ -112,3 +95,14 @@ restart.addEventListener("click", ()=>{
 
 
 
+// the array of moves the computer can choose from
+let moves = ["rock", "paper", "sciccors"];
+// defining how the input of the player should be taken. and what should be done to it
+let playerSelection;
+
+//defining how the computer gets its move
+let computerSelection = computerPlay();
+
+let playerScore = 0;
+
+let computerScore = 0;
